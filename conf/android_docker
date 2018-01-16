@@ -1,0 +1,23 @@
+FROM ubuntu:16.04
+MAINTAINER Floens
+
+ENV ANDROID_HOME "/opt/android-sdk"
+ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH
+
+VOLUME /root/.gradle
+
+RUN apt update && \
+    apt install -y --no-install-recommends \
+        unzip \
+        wget \
+        git \
+        openjdk-8-jdk
+
+RUN wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip \
+    -q -O /opt/android-sdk.zip && \
+    unzip -q /opt/android-sdk.zip -d $ANDROID_HOME && \
+    rm /opt/android-sdk.zip
+
+RUN mkdir -p /root/.android && \
+    touch /root/.android/repositories.cfg && \
+    yes | sdkmanager --licenses >/dev/null

@@ -1,0 +1,6 @@
+buildtool - android build tool for clover
+
+a small python app that listens to webhooks and builds APKs from a repo. the build is done with a docker container.
+
+it is build for clover. the only thing specific to clover right now is the output of the version file.
+i might rewrite this later to be more of use to other android projects, or just projects in general.

@@ -1,0 +1,30 @@
+repo: https://github.com/Floens/Clover.git
+name: Clover
+
+hook_secret: here
+
+docker:
+  file: conf/android_docker
+  tag: android-build
+  repo_path: /opt/repo
+
+output:
+  path: 'data/out'
+
+branches:
+  dev:
+    mode: hash
+    path: 'Clover'
+    keys:
+      - from: keys/keys.properties
+        to: Clover/app/keys.properties
+      - from: keys/keystore
+        to: Clover/app/keystore
+    command: ['./gradlew', 'assembleDevRelease', '--console', 'plain']
+    artifacts:
+      - from: Clover/app/build/outputs/apk/dev/release/app-dev-release.apk
+        to: Clover-dev-%v.apk
+      - from: Clover/app/build/outputs/mapping/dev/release/mapping.txt
+        to: Clover-dev-mapping-%v.txt
+    version_out: data/out/update_dev
+    version_url: 'https://example.com/build/dev/Clover-dev-%v.apk'
