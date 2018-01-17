@@ -62,7 +62,8 @@ def hook():
                 'msg': 'pong'
             })
         elif event == 'push':
-            branch = res['branch'].rsplit('/', maxsplit=1)[1]
+            branch = res['ref'].rsplit('/', maxsplit=1)[1]
+            print('got push for branch {}'.format(branch))
             run_build_on_pool(branch)
 
     return 'ok'
