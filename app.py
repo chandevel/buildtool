@@ -119,6 +119,7 @@ def gather_repo(conf):
     except FileExistsError:
         # Reuse if exists
         repo = Repo(path)
+        repo.remote().pull()
     # Reset to branch
     branch = repo.create_head(conf.branch)
     repo.head.reference = branch
