@@ -68,15 +68,15 @@ def hook():
     return 'ok'
 
 
-def run_server():
+def init():
     global hook_secret
 
     with open('config.yml', 'r') as f:
         r = yaml.load(f)
         hook_secret = r['hook_secret']
 
-    app.run()
 
+init()
 
 if __name__ == '__main__':
-    run_server()
+    app.run()
