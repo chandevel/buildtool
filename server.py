@@ -52,7 +52,7 @@ def hook():
     if not res:
         abort(400)
 
-    check_origin()
+    # check_origin()
     check_secret(request.headers['X-Hub-Signature'])
 
     event = request.headers['X-GitHub-Event']
