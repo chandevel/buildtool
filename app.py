@@ -132,10 +132,10 @@ def gather_repo(conf):
             repo = Repo(path)
 
         # Reset to branch
-        # repo.remote().fetch()
-        # repo.head.reset(index=True, working_tree=True)
-        # repo.git.checkout(conf.branch)
-        # repo.git.pull('origin', conf.branch)
+        repo.remote().fetch()
+        repo.head.reset(index=True, working_tree=True)
+        repo.git.checkout(conf.branch)
+        repo.git.pull('origin', conf.branch)
     except GitCommandError as e:
         print(e.stdout, e.stderr)
         raise e
