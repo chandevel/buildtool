@@ -31,6 +31,7 @@ class Configuration:
         self.version = None
         self.version_out = None
         self.version_url = None
+        self.version_flavor = None
 
         self.sha = None
         self.tag = None
@@ -98,6 +99,7 @@ def load_configuration(filename, branch):
 
         c.version_out = branch_config['version_out']
         c.version_url = branch_config['version_url']
+        c.version_flavor = branch_config['version_flavor']
 
         return c
 
@@ -228,7 +230,7 @@ def write_version(repo, conf):
             'message_html': message,
 
             'apk': {
-                conf.branch: {
+                conf.version_flavor: {
                     'url': url
                 }
             }

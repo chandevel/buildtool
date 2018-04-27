@@ -28,3 +28,4 @@ branches:
         to: Clover-dev-mapping-%v.txt
     version_out: data/out/update_dev
     version_url: 'https://example.com/build/dev/Clover-dev-%v.apk'
+    version_flavor: dev
