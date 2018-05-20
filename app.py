@@ -191,10 +191,17 @@ def process_artifacts(repo, conf):
         from_file = artifact.from_file
         to_file = artifact.to_file.replace('%v', version)
 
-        shutil.copy(
-            os.path.join(conf.repo_path, from_file),
-            os.path.join(conf.output_path, to_file)
-        )
+        try:
+            shutil.copy(
+                os.path.join(conf.repo_path, from_file),
+                os.path.join(conf.output_path, to_file)
+            )
+        except FileNotFoundError as e:
+            print('BUILD FAILED, NO ARTIFACTS')
+            print(e)
+            return False
+
+    return True
 
 
 def get_data_from_git_message(message):
@@ -264,8 +271,8 @@ def run_with_configuration(conf: Configuration):
     else:
         execute_build(repo, conf, docker_client)
 
-    process_artifacts(repo, conf)
-    write_version(repo, conf)
+    if process_artifacts(repo, conf):
+        write_version(repo, conf)
 
 
 def get_docker():
