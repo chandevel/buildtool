@@ -3,11 +3,11 @@ import yaml
 
 class GlobalConfig():
     def __init__(self):
-        self.hook_secret: str = ''
-        self.github_token: str = ''
-        self.github_repo_path: str = ''
-        self.log_url: str = ''
-        self.log_path: str = ''
+        self.hook_secret = ''
+        self.github_token = ''
+        self.github_repo_path = ''
+        self.log_url = ''
+        self.log_path = ''
 
 
 def load_config():
@@ -25,4 +25,4 @@ def load_config():
     return c
 
 
-global_config: GlobalConfig = load_config()
+global_config = load_config()

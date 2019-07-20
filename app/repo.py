@@ -9,7 +9,7 @@ from app.build import Build
 
 class BuildContext:
     def __init__(self, build: Build):
-        self.build: Build = build
+        self.build = build
 
         self.path = self.build.source_path
 

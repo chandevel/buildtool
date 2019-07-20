@@ -12,7 +12,7 @@ class Build:
     def __init__(self, configuration):
         self.configuration = configuration
 
-        self.build_id: str = ''.join(random.choice('0123456789abcdef') for _ in range(32))
+        self.build_id = ''.join(random.choice('0123456789abcdef') for _ in range(32))
 
         self.log_url = global_config.log_url + self.build_id
 
