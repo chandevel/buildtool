@@ -19,11 +19,8 @@ class Key:
 
 class Artifacts:
     def __init__(self, build, repo):
-        from app.build import Build
-        from app.repo import BuildContext
-
-        self.build: 'Build' = build
-        self.repo: 'BuildContext' = repo
+        self.build = build
+        self.repo = repo
 
         self.version_code = None
 

@@ -9,7 +9,7 @@ from app.init import global_config
 
 
 class Build:
-    def __init__(self, configuration: 'Configuration'):
+    def __init__(self, configuration):
         self.configuration = configuration
 
         self.build_id: str = ''.join(random.choice('0123456789abcdef') for _ in range(32))
@@ -22,7 +22,7 @@ class Build:
         self.github_deploy_id = -1
 
     @classmethod
-    def from_configuration(cls, configuration: 'Configuration'):
+    def from_configuration(cls, configuration):
         return cls(configuration)
 
     def notify_started(self):
