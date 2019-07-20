@@ -2,17 +2,25 @@ repo: https://github.com/Floens/Clover.git
 name: Clover
 
 hook_secret: here
+github_token: here
+github_repo_path: Floens/Clover
+
 
 docker:
   file: conf/android_docker
   tag: android-build
-  repo_path: /opt/repo
+  data_path: /opt/data
 
 output:
-  path: 'data/out'
+  path: 'data/out/builds'
+
+log:
+  url: 'https://example.com/log/'
+  path: 'data/out/log'
 
 branches:
   dev:
+    environment: dev
     mode: hash
     path: 'Clover'
     keys:
